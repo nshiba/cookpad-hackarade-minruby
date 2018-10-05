@@ -157,7 +157,12 @@ def evaluate(exp, env)
 
   # You don't need advices anymore, do you?
   when "ary_new"
-    raise(NotImplementedError) # Problem 6
+    i = 0
+    ary = []
+    while exp[i+1]
+      ary[i] = evaluate(exp[i+1], env)
+      i = i + 1
+    end
 
   when "ary_ref"
     raise(NotImplementedError) # Problem 6
