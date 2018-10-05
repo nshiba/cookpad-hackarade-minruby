@@ -165,15 +165,24 @@ def evaluate(exp, env)
       ary[i] = evaluate(exp[i+1], env)
       i = i + 1
     end
+    ary
 
   when "ary_ref"
-    raise(NotImplementedError) # Problem 6
+    ary = evaluate(exp[1], env)
+    ary[evaluate(exp[2], env)]
 
   when "ary_assign"
-    raise(NotImplementedError) # Problem 6
+    ary = evaluate(exp[1], env)
+    ary[evaluate(exp[2], env)] = evaluate(exp[3], env)
 
   when "hash_new"
-    raise(NotImplementedError) # Problem 6
+    hash = {}
+    i = 1
+    while exp[i]
+      hash[evaluate(exp[i], env)] = evaluate(exp[i+1], env)
+      i = i + 2
+    end
+    hash
 
   else
     p("error")
