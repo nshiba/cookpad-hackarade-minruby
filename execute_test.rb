@@ -8,7 +8,8 @@ Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
   end
 
   correct = `ruby #{f}`
-  answer = `ruby #{MY_PROGRAM} #{MY_PROGRAM} #{f}`
+  answer = `ruby #{MY_PROGRAM} #{MY_PROGRAM} #{MY_PROGRAM} #{f}`
+  # export RUBY_THREAD_VM_STACK_SIZE=400000000 が必要
 
   if correct == answer
     puts "\e[32m#{f} => OK!\e[0m"
