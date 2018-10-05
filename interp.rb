@@ -102,6 +102,8 @@ def evaluate(exp, env, fdef)
         else
           if n % 5 == 0
             "Buzz"
+          else
+            n
           end
         end
       when "require"

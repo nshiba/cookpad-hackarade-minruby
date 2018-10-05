@@ -2,10 +2,6 @@ require "minruby"
 
 MY_PROGRAM = 'interp.rb'
 Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
-  if f == "test4-4.rb"
-    puts "\e[33m#{f} => skip\e[0m"
-    next
-  end
 
   correct = `ruby #{f}`
   answer = `ruby #{MY_PROGRAM} #{MY_PROGRAM} #{MY_PROGRAM} #{f}`
@@ -24,6 +20,10 @@ Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
     puts code
     puts "=== AST ==="
     pp minruby_parse(code)
+    if f == "test4-4.rb"
+      puts "\e[33m#{f} => skip\e[0m"
+      next
+    end
     break
   end
 end
