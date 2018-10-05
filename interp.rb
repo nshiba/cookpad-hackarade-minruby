@@ -40,10 +40,12 @@ def evaluate(exp, env)
 
   when "stmts"
     i = 1
+    last = nil
     while exp[i]
-      evaluate(exp[i], env)
+      last = evaluate(exp[i], env)
       i = i + 1
     end
+    last
 
   when "var_ref"
     env[exp[1]]
