@@ -5,12 +5,7 @@ def evaluate(exp, env)
   # exp: A current node of AST
   # env: An environment (explained later)
 
-  # pp(exp)
-  # pp('env:')
-  # pp(env)
-
   case exp[0]
-
 #
 ## Problem 1: Arithmetics
 #
@@ -132,13 +127,13 @@ def evaluate(exp, env)
       # `def foo(a, b, c)`.
       # raise(NotImplementedError) # Problem 5
 
-      func = $function_definitions[exp[1]]
       i = 0
+      fenv = {}
       while func[0][i]
-        env[func[0][i]] = evaluate(exp[i+2], env)
+        fenv[func[0][i]] = evaluate(exp[i+2], env)
         i = i + 1
       end
-      evaluate(func[1], env)
+      evaluate(func[1], fenv)
     end
 
   when "func_def"
