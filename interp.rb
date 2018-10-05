@@ -39,8 +39,10 @@ def evaluate(exp, env)
 #
 
   when "stmts"
-    for i in 1..exp.length - 1 do
+    i = 1
+    while exp[i]
       evaluate(exp[i], env)
+      i = i + 1
     end
 
   when "var_ref"
