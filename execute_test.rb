@@ -10,6 +10,10 @@ Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
   if correct == answer
     puts "\e[32m#{f} => OK!\e[0m"
   else
+    if f == "test4-4.rb"
+      puts "\e[33m#{f} => skip\e[0m"
+      next
+    end
     puts "\e[31m#{f} => NG!\e[0m"
     puts "=== Expect ==="
     puts correct
@@ -20,10 +24,6 @@ Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
     puts code
     puts "=== AST ==="
     pp minruby_parse(code)
-    if f == "test4-4.rb"
-      puts "\e[33m#{f} => skip\e[0m"
-      next
-    end
     break
   end
 end
