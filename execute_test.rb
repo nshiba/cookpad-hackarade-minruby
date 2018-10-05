@@ -8,7 +8,7 @@ Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
   end
 
   correct = `ruby #{f}`
-  answer = `ruby #{MY_PROGRAM} #{f}`
+  answer = `ruby #{MY_PROGRAM} #{MY_PROGRAM} #{f}`
 
   if correct == answer
     puts "\e[32m#{f} => OK!\e[0m"
